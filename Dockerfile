@@ -1,17 +1,15 @@
 FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y \
-    gnucobol \
     libcob4 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
 
-COPY coin.cob /workspace/
+COPY coin /workspace/coin
 COPY cotacao.txt /workspace/
 
-RUN cobc -x -free -static -o /workspace/coin /workspace/coin.cob && \
-    chmod +x /workspace/coin
+RUN chmod +x /workspace/coin
 
 COPY main.py /workspace/
 COPY requirements.txt /workspace/
