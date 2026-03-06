@@ -7,13 +7,14 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /workspace
 
-COPY coin.cob .
-COPY cotacao.txt .
+COPY coin.cob /workspace/
+COPY cotacao.txt /workspace/
 
-RUN cobc -x -free -static -o coin coin.cob
+RUN cobc -x -free -static -o /workspace/coin /workspace/coin.cob && \
+    chmod +x /workspace/coin
 
-COPY main.py .
-COPY requirements.txt .
+COPY main.py /workspace/
+COPY requirements.txt /workspace/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
