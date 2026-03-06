@@ -1,26 +1,22 @@
-# Começa com imagem Ubuntu
-FROM ubuntu:24.04
+FROM python:3.11-slim
 
-# Instala COBOL e bibliotecas
 RUN apt-get update && apt-get install -y \
     gnucobol \
     libcob4 \
-    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Define pasta de trabalho
-WORKDIR /app
+WORKDIR /workspace
 
-# Copia seus arquivos do repositório para dentro da imagem
-COPY coin.cob /app/
-COPY cotacao.txt /app/
-COPY entrypoint.sh /app/
+COPY coin.cob .
+COPY cotacao.txt .
 
-# Compila o COBOL (uma vez, não toda vez que usar)
 RUN cobc -x -free -static -o coin coin.cob
 
-# Torna o entrypoint executável
-RUN chmod +x /app/entrypoint.sh
+COPY main.py .
+COPY requirements.txt .
 
-# Define o que roda quando alguém chamar essa imagem
-ENTRYPOINT ["/app/entrypoint.sh"]
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENV PORT=8080
+
+CMD exec functions-framework --target=conversor_moedas --debug --port=$PORT
