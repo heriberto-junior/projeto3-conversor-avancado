@@ -7,7 +7,7 @@
 - **Virtualização:** VirtualBox (Linux)
 - **Sistema Operacional VM:** Ubuntu 24.04 LTS
 
-### Softwares Instalados na VM
+### Softwares Instalados na VM (Linux)
 - GNU COBOL (compilador)
 - Python 3.12
 - Flask (framework web)
@@ -19,7 +19,7 @@
 
 ## O que foi instalado
 
-### 1: VM VirtualBox
+### 1: VM VirtualBox (Linux)
 
 ```bash
 # Baixado VirtualBox: https://www.virtualbox.org/wiki/Downloads
