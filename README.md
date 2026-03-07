@@ -2,8 +2,7 @@
 Conversor de moedas desenvolvido em COBOL que executa via API REST em Python.
 
 
-<strong style="font-size: 3em;">Ambiente</strong>
-Ambiente
+<span style="font-weight: bold; font-size: 20px;">Ambiente</span>
 Hardware Utilizado
 
 PC: Windows 10/11
