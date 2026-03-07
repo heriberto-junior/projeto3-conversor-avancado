@@ -1,7 +1,5 @@
 ## Projeto 3 - Conversor de moedas desenvolvido em COBOL que executa via API REST em Python
 
----
-
 ## Ambiente
 
 ### Hardware Utilizado
@@ -39,7 +37,7 @@
 Após logar na VM, foi necessário entrar no Terminal e efetuar os comandos:
 
 ```bash
-# Atualização sistema
+# Atualização do sistema
 sudo apt-get update && sudo apt-get upgrade -y
 
 # Instalação do Git
@@ -70,7 +68,7 @@ Após efetuar as instalações, foi necessário entrar no no VSCode, abrir o ter
 ### 1: Configurar Identidade Git
 
 ```bash
-# Configurar o nome
+# Configurar meu nome
 git config --global user.name "Meu Nome no git"
 
 # Configurar meu e-mail
@@ -119,8 +117,7 @@ projeto3-conversor-avancado/
 ├── app.py            (API Python que chama COBOL)
 ├── coin              (Binário compilado - Gerado no VSCode)
 ├── venv/             (Virtual environment Python - Gerado no VSCode)
-├── README.md         (Documentação)
-└── .gitignore        (Arquivos ignorados pelo Git)
+└── README.md         (Documentação)
 ```
 
 ### Compilação do COBOL
@@ -239,7 +236,7 @@ curl -X POST http://localhost:5000/converter \
   -d '{"valor":"100","moeda":"USD"}'
 ```
 
-**Isso deve me trazer o resultado esperado:**
+**Isso me trouxe o resultado esperado:**
 ```json
 {
   "moeda": "USD",
@@ -249,13 +246,13 @@ curl -X POST http://localhost:5000/converter \
 }
 ```
 
-### 3: Testar Health Check
+### 3: Teste de Health Check
 
 ```bash
 curl http://localhost:5000/health
 ```
 
-**Resposta esperada:**
+**Me trouxe a resposta esperada:**
 ```json
 {
   "servico": "Conversor de Moedas COBOL",
@@ -263,7 +260,7 @@ curl http://localhost:5000/health
 }
 ```
 
-### 4: Demais testes com outras moedas
+### 4: Teste montado abaixo para outras moedas
 
 ```bash
 # EUR (Euro)
@@ -281,7 +278,7 @@ curl -X POST http://localhost:5000/converter \
 
 ## Estrutura de Dados atual
 
-### Arquivo cotacao.txt
+### O arquivo cotacao.txt contem o conteúdo para conversão de moedas usado no Cobol
 
 ```
 USD00019330     # Dólar: 1 BRL = 0.19330 USD
