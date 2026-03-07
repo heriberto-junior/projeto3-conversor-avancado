@@ -1,30 +1,12 @@
-# 📚 Documentação Completa - Conversor de Moedas COBOL
-
-## 🎯 Projeto Final
-
-Um **conversor de moedas desenvolvido em COBOL** que executa via **API REST em Python**, demonstrando integração entre linguagens clássicas (COBOL) com tecnologias modernas.
-
-**Status:** ✅ Funcionando 100%
+## Projeto 3 - Conversor de moedas desenvolvido em COBOL que executa via API REST em Python
 
 ---
 
-## 📋 Índice
-
-1. [Ambiente](#ambiente)
-2. [Instalação Completa](#instalação-completa)
-3. [Compilação COBOL](#compilação-cobol)
-4. [Configuração API Python](#configuração-api-python)
-5. [Testes](#testes)
-6. [Deploy no GitHub](#deploy-no-github)
-7. [Comandos Rápidos](#comandos-rápidos)
-
----
-
-## 🖥️ Ambiente
+## Ambiente
 
 ### Hardware Utilizado
-- **PC:** Windows 10/11
-- **Virtualização:** VirtualBox (grátis)
+- **PC:** Windows 10
+- **Virtualização:** VirtualBox (Linux)
 - **Sistema Operacional VM:** Ubuntu 24.04 LTS
 
 ### Softwares Instalados na VM
@@ -37,104 +19,87 @@ Um **conversor de moedas desenvolvido em COBOL** que executa via **API REST em P
 
 ---
 
-## 📦 Instalação Completa
+## O que foi instalado
 
-### PASSO 1: Criar VM VirtualBox
+### 1: VM VirtualBox
 
 ```bash
-# Baixar VirtualBox: https://www.virtualbox.org/wiki/Downloads
-# Baixar Ubuntu ISO: https://ubuntu.com/download/desktop (24.04 LTS)
+# Baixado VirtualBox: https://www.virtualbox.org/wiki/Downloads
+# Baixado Ubuntu ISO: https://ubuntu.com/download/desktop (24.04 LTS)
 
-# No VirtualBox:
-# - Clique "Novo"
-# - Nome: Ubuntu-COBOL
-# - ISO: selecione arquivo Ubuntu
+# No VirtualBox foi setado:
 # - Tipo: Linux / Ubuntu 64-bit
 # - RAM: 4096 MB
 # - Processadores: 2
-# - Disco: 50 GB
-# - Firewall: ✓ HTTP, ✓ HTTPS
-# - Clique "Finish"
+# - Disco: 10 GB
 ```
 
-### PASSO 2: Instalar Ubuntu na VM
+### 2: Instalações de Dependências do Sistema
+
+Após logar na VM, foi necessário entrar no Terminal e efetuar os comandos:
 
 ```bash
-# Após iniciar VM:
-# - Português (ou English)
-# - Install Ubuntu
-# - Normal Installation
-# - ✓ Install third-party software
-# - Create user: username=cobol, password=123456
-# - Aguarde ~15 minutos
-```
-
-### PASSO 3: Instalar Dependências do Sistema
-
-Após logar na VM, abrir Terminal:
-
-```bash
-# Atualizar sistema
+# Atualização sistema
 sudo apt-get update && sudo apt-get upgrade -y
 
-# Instalar Git
+# Instalação do Git
 sudo apt-get install -y git
 
-# Instalar COBOL
+# Instalação do COBOL GNU
 sudo apt-get install -y gnucobol
 
-# Instalar Python
+# Instalação do Python
 sudo apt-get install -y python3 python3-pip
 
-# Instalar Python venv (para isolamento de ambiente)
+# Instalação do Python venv (para isolamento de ambiente)
 sudo apt install -y python3.12-venv
 
-# Instalar VSCode
+# Instalação do VSCode
 sudo snap install --classic code
 
-# Instalar cURL (para testar API)
+# Instalação do cURL (para testar API)
 sudo apt install -y curl
 ```
 
-**Tempo total:** ~15-20 minutos
-
 ---
 
-## 🔐 Configurar Git na VM
+## Configuração do Git na VM
 
-### PASSO 1: Configurar Identidade Git
+Após efetuar as instalações, foi necessário entrar no no VSCode, abrir o terminal com ctrl+j e efetuar os comandos para configurar o git:
+
+### 1: Configurar Identidade Git
 
 ```bash
-# Seu nome
-git config --global user.name "Seu Nome"
+# Configurar o nome
+git config --global user.name "Meu Nome no git"
 
-# Seu email
-git config --global user.email "seu.email@gmail.com"
+# Configurar meu e-mail
+git config --global user.email "meu.email@gmail.com do git"
 ```
 
-### PASSO 2: Gerar Chave SSH
+### 2: Gerar Chave SSH
 
 ```bash
 # Gerar chave SSH
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
 
-# Copiar chave pública
+# Gerar chave pública
 cat ~/.ssh/id_rsa.pub
 ```
 
-**Copie TODO o texto que aparecer.**
+**Foi encessário copiar todo o código da chave gerada.**
 
-### PASSO 3: Adicionar Chave no GitHub
+### 3: Adicionar Chave no GitHub
 
-1. Vá para: https://github.com/settings/keys
-2. Clique "New SSH key"
-3. Cole a chave copiada
-4. Clique "Add SSH key"
+1. Ir em: https://github.com/settings/keys
+2. Cliquar em "New SSH key"
+3. Colar a chave copiada
+4. Cliquar em "Add SSH key"
 
-### PASSO 4: Clonar Repositório
+### 4: Clonar Repositório
 
 ```bash
-# Clonar seu repositório
+# Clonar meu repositório
 git clone git@github.com:heriberto-junior/projeto3-conversor-avancado.git
 
 # Entrar na pasta
@@ -143,7 +108,7 @@ cd projeto3-conversor-avancado
 
 ---
 
-## 🔧 Compilação COBOL
+## Compilação do COBOL
 
 ### Estrutura de Arquivos
 
@@ -152,35 +117,36 @@ projeto3-conversor-avancado/
 ├── coin.cob          (Programa COBOL principal)
 ├── cotacao.txt       (Arquivo de dados com cotações)
 ├── app.py            (API Python que chama COBOL)
-├── coin              (Binário compilado - GERADO)
-├── venv/             (Virtual environment Python - GERADO)
+├── coin              (Binário compilado - Gerado no VSCode)
+├── venv/             (Virtual environment Python - Gerado no VSCode)
 ├── README.md         (Documentação)
 └── .gitignore        (Arquivos ignorados pelo Git)
 ```
 
-### Compilar COBOL
+### Compilação do COBOL
 
 ```bash
-# Compilar coin.cob para gerar binário 'coin'
+# Foi necessário compilar o coin.cob para gerar binário 'coin'
 cobc -x -free -static -o coin coin.cob
 ```
 
-**Explicação de flags:**
+**Explicação das flags da compilação:**
+- `cobc` : Instrução de compilação
 - `-x` : Gera executável
-- `-free` : Formato livre (não fixed)
-- `-static` : Compilação estática (sem dependências externas)
+- `-free` : Formato livre (não fixado)
+- `-static` : Compilação estática (para não ter dependências externas)
 - `-o coin` : Nome do executável
 
-### Verificar Compilação
+### Comandos usados para verificar a compilação
 
 ```bash
-# Listar arquivo compilado
+# Lista arquivo compilado
 ls -lah coin
 
 # Deve aparecer algo como: -rwxr-xr-x 1 cobol cobol 69K Mar 6 12:00 coin
 ```
 
-### Testar COBOL Manualmente
+### Comando para testar o COBOL Manualmente
 
 ```bash
 # Testar conversão
@@ -192,131 +158,54 @@ ls -lah coin
 
 ---
 
-## 🐍 Configuração API Python
+## Configuração API Python
 
-### PASSO 1: Criar Virtual Environment
+### 1: Criação do Virtual Environment
 
-O virtual environment isola pacotes Python para este projeto.
+O virtual environment foi usado para isolar pacotes Python para este projeto.
 
 ```bash
-# Criar venv
+# Criação do venv
 python3 -m venv venv
 
-# Ativar venv
+# Ativação do venv
 source venv/bin/activate
-
-# Você deve ver (venv) antes do prompt
 ```
 
-### PASSO 2: Instalar Flask
+### 2: Instalação do Flask
 
 ```bash
 # Instalar Flask (framework web)
 pip install flask
 ```
 
-**Nota:** Dentro do venv, use `pip` (não `pip3`)
+**Nota de lembrança:** Dentro do venv, tive que usar `pip` (não `pip3`)
 
-### PASSO 3: Criar app.py
+### 3: Criação do app.py
 
-No terminal (não em Python!):
+Criado o app.py para chamar o Cobol e testar a execução.
 
-```bash
-cat > app.py << 'EOF'
-from flask import Flask, request, jsonify
-import subprocess
-import os
 
-app = Flask(__name__)
-
-# Diretório onde está o binário coin
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-
-@app.route('/converter', methods=['POST'])
-def converter():
-    """Endpoint que chama COBOL"""
-    try:
-        # Receber JSON
-        data = request.get_json()
-        valor = str(data.get('valor', ''))
-        moeda = str(data.get('moeda', ''))
-        
-        # Validar
-        if not valor or not moeda:
-            return jsonify({
-                'erro': 'Faltam parâmetros: valor e moeda',
-                'sucesso': False
-            }), 400
-        
-        # Executar COBOL
-        resultado = subprocess.run(
-            [os.path.join(PROJECT_DIR, 'coin'), valor, moeda],
-            capture_output=True,
-            text=True,
-            timeout=5,
-            cwd=PROJECT_DIR
-        )
-        
-        # Verificar resultado
-        if resultado.returncode == 0:
-            return jsonify({
-                'resultado': resultado.stdout.strip(),
-                'sucesso': True,
-                'valor': valor,
-                'moeda': moeda
-            }), 200
-        else:
-            return jsonify({
-                'erro': resultado.stderr.strip(),
-                'sucesso': False
-            }), 400
-    
-    except subprocess.TimeoutExpired:
-        return jsonify({
-            'erro': 'Execução demorou muito',
-            'sucesso': False
-        }), 408
-    except Exception as e:
-        return jsonify({
-            'erro': str(e),
-            'sucesso': False
-        }), 500
-
-@app.route('/health', methods=['GET'])
-def health():
-    """Verificar se API está online"""
-    return jsonify({
-        'status': 'online',
-        'servico': 'Conversor de Moedas COBOL'
-    }), 200
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-EOF
-```
-
-**Importante:** Este é um comando bash. Copie EXATAMENTE como está, sem modificações.
-
-### Verificar app.py
+### 4: Verificação do app.py
 
 ```bash
-# Listar arquivo criado
+# Listagem do arquivo criado
 ls -lah app.py
 
-# Verificar conteúdo
+# Verificação conteúdo
 head -10 app.py
 ```
 
 ---
 
-## 🧪 Testes
+## Testes
 
-### PASSO 1: Rodar API
+### 1: Rodar API em 1 aba do terminal do VSCode
 
-Na aba 1 do terminal:
+Em uma aba do terminal foi necessário:
 
 ```bash
-# Certifique-se de estar na pasta do projeto
+# Entrar na pasta do projeto
 cd ~/projeto3-conversor-avancado
 
 # Ativar venv
@@ -326,22 +215,22 @@ source venv/bin/activate
 python3 app.py
 ```
 
-**Resposta esperada:**
+**Isso me deve dar a resposta:**
 ```
  * Running on http://0.0.0.0:5000
  * Debug mode: on
  * Debugger is active!
 ```
 
-### PASSO 2: Testar em Outra Aba
+### 2: Testar em Outra Aba
 
-Abra **OUTRA aba** do terminal (não feche a primeira):
+Sem fechar a primeira aba foi necessário:
 
 ```bash
 # Entrar na pasta do projeto
 cd ~/projeto3-conversor-avancado
 
-# Ativar venv (importante!)
+# Ativar o venv
 source venv/bin/activate
 
 # Testar API
@@ -350,7 +239,7 @@ curl -X POST http://localhost:5000/converter \
   -d '{"valor":"100","moeda":"USD"}'
 ```
 
-**Resposta esperada:**
+**Isso deve me trazer o resultado esperado:**
 ```json
 {
   "moeda": "USD",
@@ -360,7 +249,7 @@ curl -X POST http://localhost:5000/converter \
 }
 ```
 
-### PASSO 3: Testar Health Check
+### 3: Testar Health Check
 
 ```bash
 curl http://localhost:5000/health
@@ -374,7 +263,7 @@ curl http://localhost:5000/health
 }
 ```
 
-### PASSO 4: Testar Outras Moedas
+### 4: Demais testes com outras moedas
 
 ```bash
 # EUR (Euro)
@@ -390,127 +279,7 @@ curl -X POST http://localhost:5000/converter \
 
 ---
 
-## 📤 Deploy no GitHub
-
-### PASSO 1: Verificar Status
-
-```bash
-# Ver arquivos modificados/criados
-git status
-```
-
-**Resposta esperada:**
-```
-Changes not staged for commit:
-  modified:   coin.cob
-  
-Untracked files:
-  app.py
-  coin
-```
-
-### PASSO 2: Criar .gitignore
-
-Para não enviar arquivos desnecessários:
-
-```bash
-cat > .gitignore << 'EOF'
-venv/
-__pycache__/
-*.pyc
-.DS_Store
-.vscode/
-*.swp
-EOF
-```
-
-### PASSO 3: Adicionar Arquivos
-
-```bash
-# Adicionar arquivos
-git add coin.cob app.py coin README.md .gitignore
-
-# Verificar o que será commitado
-git status
-```
-
-### PASSO 4: Fazer Commit
-
-```bash
-git commit -m "Add COBOL API: Python Flask wrapper for COBOL converter"
-```
-
-### PASSO 5: Fazer Push
-
-```bash
-git push
-```
-
-**Resposta esperada:**
-```
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 4 threads
-Writing objects: 100% (3/3), 2.5 KiB | 2.5 MiB/s, done.
-Total 3 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To https://github.com/heriberto-junior/projeto3-conversor-avancado.git
-   abc1234..def5678  main -> main
-```
-
----
-
-## ⚡ Comandos Rápidos (Cheat Sheet)
-
-### Iniciar Desenvolvendo
-
-```bash
-# 1. Entrar na pasta
-cd ~/projeto3-conversor-avancado
-
-# 2. Ativar venv
-source venv/bin/activate
-
-# 3. Compilar COBOL (se modificou coin.cob)
-cobc -x -free -static -o coin coin.cob
-
-# 4. Rodar API
-python3 app.py
-```
-
-### Testar API
-
-```bash
-# Em outra aba, com venv ativado:
-curl -X POST http://localhost:5000/converter \
-  -H "Content-Type: application/json" \
-  -d '{"valor":"100","moeda":"USD"}'
-```
-
-### Fazer Commit
-
-```bash
-git add app.py coin.cob
-git commit -m "Sua mensagem aqui"
-git push
-```
-
-### Parar API
-
-```bash
-# Na aba onde app.py está rodando, pressione:
-CTRL + C
-```
-
-### Desativar venv
-
-```bash
-deactivate
-```
-
----
-
-## 📊 Estrutura de Dados
+## Estrutura de Dados atual
 
 ### Arquivo cotacao.txt
 
@@ -523,13 +292,13 @@ AUD00027190     # Dólar Australiano: 1 BRL = 0.27190 AUD
 CAD00026360     # Dólar Canadense: 1 BRL = 0.26360 CAD
 ```
 
-**Formato:** `MOEDATAXA`
+**Formato:** 
 - `MOEDA`: 3 caracteres (USD, EUR, JPY, etc)
-- `TAXA`: 8 dígitos sem ponto decimal (multiplicar por 0.00001)
+- `TAXA`: 8 dígitos, sendo internamente usado no cobol como 3 campos inteiros e 5 campos fracionados
 
 ---
 
-## 🔄 Fluxo de Funcionamento
+## Fluxo de Funcionamento
 
 ```
 1. Usuário envia requisição HTTP POST
@@ -551,58 +320,3 @@ CAD00026360     # Dólar Canadense: 1 BRL = 0.26360 CAD
 9. Retorna resposta ao usuário
 ```
 
----
-
-## 🐛 Troubleshooting
-
-### Erro: "pip: command not found"
-**Solução:** Você saiu do venv. Execute `source venv/bin/activate`
-
-### Erro: "No module named 'flask'"
-**Solução:** Ative venv e instale: `pip install flask`
-
-### Erro: "./coin: command not found"
-**Solução:** Compile COBOL: `cobc -x -free -static -o coin coin.cob`
-
-### Erro: "Arquivo ou diretório inexistente" ao ativar venv
-**Solução:** Crie venv: `python3 -m venv venv`
-
-### Porta 5000 já em uso
-**Solução:** 
-```bash
-# Encontrar processo usando porta 5000
-lsof -i :5000
-
-# Matar processo (substitua PID)
-kill -9 PID
-```
-
----
-
-## 📝 Próximos Passos
-
-1. **Melhorar README.md** com instruções para entrevistadores
-2. **Adicionar Docker** para facilitar setup (opcional)
-3. **Deploy na nuvem** (Google Cloud, AWS, etc)
-4. **Integração com IA** no VSCode
-5. **Adicionar testes automatizados**
-
----
-
-## 📞 Resumo Executivo
-
-| Aspecto | Detalhes |
-|---------|----------|
-| **Linguagem Principal** | COBOL |
-| **API** | Python + Flask |
-| **Sistema Operacional** | Ubuntu 24.04 LTS |
-| **Compilador COBOL** | GNU COBOL |
-| **Framework Web** | Flask 3.x |
-| **Porta API** | 5000 |
-| **Status** | ✅ Funcionando |
-| **GitHub** | https://github.com/heriberto-junior/projeto3-conversor-avancado |
-
----
-
-**Última atualização:** 2026-03-06
-**Status:** Completo e funcionando 100%
