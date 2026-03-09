@@ -1,4 +1,4 @@
-## Projeto 3 - Conversor de moedas desenvolvido em COBOL que executa via API REST em Python
+## Projeto 3 - Conversor de moedas desenvolvido em COBOL que executa via API REST em Python (teste local)
 
 ## Ambiente
 
@@ -98,10 +98,10 @@ cat ~/.ssh/id_rsa.pub
 
 ```bash
 # Clonar meu repositório
-git clone git@github.com:heriberto-junior/projeto3-conversor-avancado.git
+git clone git@github.com:heriberto-junior/PRJ-3-conversor-avancado.git
 
 # Entrar na pasta
-cd projeto3-conversor-avancado
+cd PRJ-3-conversor-avancado
 ```
 
 ---
@@ -111,7 +111,7 @@ cd projeto3-conversor-avancado
 ### Estrutura de Arquivos
 
 ```
-projeto3-conversor-avancado/
+PRJ-3-conversor-avancado/
 ├── coin.cob          (Programa COBOL principal)
 ├── cotacao.txt       (Arquivo de dados com cotações)
 ├── app.py            (API Python que chama COBOL)
@@ -203,7 +203,7 @@ Em uma aba do terminal foi necessário:
 
 ```bash
 # Entrar na pasta do projeto
-cd ~/projeto3-conversor-avancado
+cd ~/PRJ-3-conversor-avancado
 
 # Ativar venv
 source venv/bin/activate
@@ -225,7 +225,7 @@ Sem fechar a primeira aba foi necessário:
 
 ```bash
 # Entrar na pasta do projeto
-cd ~/projeto3-conversor-avancado
+cd ~/PRJ-3-conversor-avancado
 
 # Ativar o venv
 source venv/bin/activate
